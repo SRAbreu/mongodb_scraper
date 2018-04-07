@@ -21,24 +21,13 @@ app.use(express.static("./public"));
 
 // connect to database
 mongoose.Promise = Promise;
-var dbConnect = process.env.MONGODB_URI || "mongodb://localhost/foxsScrape";
+var dbConnect = process.env.MONGODB_URI;
 if(process.env.MONGODB_URI) {
-    mongoose.connect(process.env.MONGODB_URI)
+    mongoose.connect(process.env.MONGODB_URI);
 } else {
     mongoose.connect(dbConnect);
 }
-// mongodb://foxsScrape:password12@ds119585.mlab.com:19585/heroku_hd8909ql;
-// Connect mongoose to our database
-/* mongoose.connect(dbConnect, function (error) {
-    // Log any errors connecting with mongoose
-    if (error) {
-        console.log(error);
-    }
-    // Or log a success message
-    else {
-        console.log("Mongoose connection is successful");
-    }
-}); */
+//mongoose.connect("mongodb://heroku....")
 var db = mongoose.connection;
 db.on('error',function(err){
     console.log('Mongoose Error',err);
