@@ -14,9 +14,7 @@ var PORT = process.env.PORT || 4000;
 // Parse application/x-www-form-urlencoded
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("./public"));
 
 // connect to database
